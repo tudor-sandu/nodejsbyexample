@@ -1,3 +1,4 @@
+console.log(module.filename) 
 class Human {
     constructor(name) {
       this.name = name;
