@@ -5,6 +5,7 @@ paul.speak();
 person.name = "Paul";
 const barney = require("./human");
 
+console.log(require.cache);
 barney.speak();
 paul.speak();
 
@@ -14,6 +15,8 @@ paul.speak();
 
 // const barney = require("./human1");
 // barney.name = "Barney";
+
+// console.log(require.cache);
 
 // barney.speak();
 
