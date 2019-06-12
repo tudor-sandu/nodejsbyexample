@@ -1,0 +1,19 @@
+version: "2.1"
+
+# sets up the infrastructure needed for development
+services:
+  postgres:
+    image: postgres:9.6.3
+    environment:
+      - POSTGRES_USER=training
+      - POSTGRES_PASSWORD=training
+      - POSTGRES_DB=training
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: "pg_isready -h localhost -p 5432 -q -U training"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    container_name: pssql-training
