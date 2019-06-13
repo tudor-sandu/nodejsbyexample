@@ -1,0 +1,15 @@
+This is a simple example for a CRUD app using node.js, express, postgresql.
+It is based on an app you would use to buy,sell tickets.
+
+
+This app includes:
+- Basic express setup (routing, cors, body-parser).
+- Middleware (admin,client).
+- Postgresql queries and connection and docker compose.
+- Basic folder structure.
+
+This app does not include:
+- Logging.
+- DB Migrations.
+- Advanced Error handling.
+- Request, response validations.

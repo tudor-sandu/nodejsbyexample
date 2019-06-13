@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const controller = require("./controller");
+const roles = require("../middleware");
 
 router.get("/", async (_, res) => {
   try {
@@ -20,7 +21,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", roles.isAdmin, async (req, res) => {
   try {
     const ticket = await controller.AddNewTicket(req.body);
     res.send(ticket);
@@ -29,7 +30,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", roles.isClient, async (req, res) => {
   try {
     const ticket = await controller.BuyTicket(req.params.id);
     res.send(ticket);
@@ -38,7 +39,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", roles.isAdmin, async (req, res) => {
   try {
     const ticket = await controller.ChangeTicketDetails(
       req.params.id,
